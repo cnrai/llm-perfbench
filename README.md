@@ -5,8 +5,9 @@
 [![image](https://github.com/user-attachments/assets/6d432ee9-1186-41e6-a191-010640a87899)](https://cnr.ai)
 
 ![output](https://github.com/user-attachments/assets/eb5f3f50-2b43-40d4-a156-59d1fc442f6e)
-
+Running DeepSeek-V3-0324-4bit on Apple M3 Ultra 512GB - 21.4 tokens per second
 </div>
+<div>&nbsp;</div>
 
 A benchmarking tool for measuring various Large Language Model (LLM) inference performance across different runtime engines on Apple M3 Ultra hardware.
 
