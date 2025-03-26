@@ -8,8 +8,8 @@ This project provides a standardized framework for evaluating the token processi
 
 ## Features
 
-- Benchmark multiple LLM runtime engines (Ollama, llama.cpp, MLC, vLLM, etc.)
-- Test with various model sizes (7B to 70B parameters)
+- Benchmark multiple LLM runtime engines (Ollama, LM Studio, etc.)
+- Test with various model sizes (7B to 671B parameters)
 - Measure both input tokenization speed and output generation speed
 - Monitor hardware resource utilization (CPU, memory, GPU)
 - Generate detailed performance reports and visualizations
