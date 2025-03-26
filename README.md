@@ -6,12 +6,67 @@ A comprehensive benchmarking tool for measuring Large Language Model (LLM) infer
 
 This project provides a standardized framework for evaluating the token processing speed (both input and output) of various LLM inference engines. It focuses on measuring real-world performance on Apple M3 Ultra chips to help developers optimize their LLM deployments.
 
+## Benchmark Methodology
+
+### Testing Criteria
+
+| Parameter             | Details                                                                      |
+| --------------------- | ---------------------------------------------------------------------------- |
+| **Hardware**          | Apple M3 Ultra (32-core CPU, 80-core GPU, 32-core Neural Engine)             |
+| **RAM**               | 512GB unified memory, 819GB/s memory bandwidth                               |
+| **OS**                | macOS Sequoia 15.3.2                                                         |
+| **Prompt Sets**       | Short (< 100 tokens), Long (1000+ tokens)                                    |
+| **Metrics Collected** | Input tokens/sec, Output tokens/sec, Total latency, Memory usage             |
+| **Iterations**        | 3 runs per model/runtime configuration without warmup (avoid prompt caching) |
+
+## Benchmark Results
+
+Below are example results measuring tokens per second for both input tokenization and output generation across different runtime engines and models.
+
+### Input Tokenization Speed (tokens/sec)
+
+| Model                                    | MLX   | LM Studio | llama.cpp  |
+| ---------------------------------------- | ----- | --------- | ---------- |
+| DeepSeek-V3-0324-4bit                    | 41.5  | N/A       | Not tested |
+| DeepSeek-R1-Q4_K_M                       | N/A   | N/A       | 12.9       |
+| Mistral-Small-3.1-24B-Instruct-2503-bf16 | 234.1 | N/A       | Not tested |
+| Llama-3.3-70b-instruct-fp16              | 66.0  | N/A       | Not tested |
+
+Note: LM Studio does not provide input tokenization speed.
+
+### Output Generation Speed (tokens/sec)
+
+| Model                                    | MLX  | LM Studio | llama.cpp  |
+| ---------------------------------------- | ---- | --------- | ---------- |
+| DeepSeek-V3-0324-4bit                    | 20.9 | 19.7      | Not tested |
+| DeepSeek-R1-Q4_K_M                       | N/A  | 15.9      | 15.5       |
+| Mistral-Small-3.1-24B-Instruct-2503-bf16 | 15.5 | 15.6      | Not tested |
+| Llama-3.3-70b-instruct-fp16              | 5.1  | 4.9       | Not tested |
+
+Note: DeepSeek-R1-Q4_K_M cannot be tested with MLX due to the GGUF model format.
+
+### Memory Usage (GB)
+
+| Model                                    | MLX | LM Studio | llama.cpp  |
+| ---------------------------------------- | --- | --------- | ---------- |
+| DeepSeek-V3-0324-4bit                    | 381 | 354       | Not tested |
+| DeepSeek-R1-Q4_K_M                       | N/A | 396       | 435        |
+| Mistral-Small-3.1-24B-Instruct-2503-bf16 | 48  | 45        | Not tested |
+| Llama-3.3-70b-instruct-fp16              | 141 | 132       | Not tested |
+
+### Runtime Engines Tested
+
+- **Ollama**: Ollama is an open-source tool that allows you to run LLMs locally on your machine
+- **LM Studio**: LM Studio is a desktop application designed to facilitate local experimentation, management, and interaction with large language models (LLMs)
+- **MLX**: MLX is an array framework for machine learning on Apple silicon by Apple. We expect it to be the fastest runtime engine for LLMs on M3 Ultra hardware.
+
+
 ## Features
 
-- Benchmark multiple LLM runtime engines (Ollama, LM Studio, etc.)
-- Test with various model sizes (7B to 671B parameters)
+- Benchmark multiple LLM runtime engines (MLX, LM Studio, llama.cpp)
+- Test with various model sizes (Up to 671B parameters)
 - Measure both input tokenization speed and output generation speed
-- Monitor hardware resource utilization (CPU, memory, GPU)
+- Monitor hardware resource utilization (GPU, memory)
 - Generate detailed performance reports and visualizations
 
 ## Installation
@@ -33,74 +88,7 @@ python3 src/hardware/hardware_info.py
 ## Usage
 
 ```bash
-# Run benchmark with default settings
-python main.py
-
-# Run benchmark for a specific runtime and model
-python main.py --runtime ollama --model llama3:8b
-
-# Use different prompt lengths
-python main.py --prompt-set short
-python main.py --prompt-set medium
-python main.py --prompt-set long
 ```
-
-## Benchmark Methodology
-
-### Testing Criteria
-
-| Parameter | Details |
-|-----------|---------|
-| **Hardware** | Apple M3 Ultra (32-core CPU, 80-core GPU, 32-core Neural Engine) |
-| **RAM** | 512GB unified memory, 819GB/s memory bandwidth |
-| **OS** | macOS Sequoia 15.3 (24D2059) |
-| **Prompt Sets** | Short (< 100 tokens), Medium (100-1000 tokens), Long (1000+ tokens) |
-| **Metrics Collected** | Input tokens/sec, Output tokens/sec, Total latency, CPU usage, Memory usage, GPU utilization |
-| **Iterations** | 3 runs per model/runtime configuration with warmup |
-
-### Runtime Engines Tested
-
-- **Ollama**: Ollama is an open-source tool that allows you to run LLMs locally on your machine
-- **LM Studio**: LM Studio is a desktop application designed to facilitate local experimentation, management, and interaction with large language models (LLMs)
-
-
-## Benchmark Results
-
-Below are example results measuring tokens per second for both input tokenization and output generation across different runtime engines and models.
-
-### Input Tokenization Speed (tokens/sec)
-
-| Model         | Ollama | LM Studio |
-|---------------|--------|-----------|
-| Llama-3 8B    | TBD    | TBD       |
-| Llama-3 70B   | TBD    | TBD       |
-| Mistral 7B    | TBD    | TBD       |
-| Phi-3 Mini    | TBD    | TBD       |
-| Gemma 7B      | TBD    | TBD       |
-
-### Output Generation Speed (tokens/sec)
-
-| Model         | Ollama | LM Studio |
-|---------------|--------|-----------|
-| Llama-3 8B    | TBD    | TBD       |
-| Llama-3 70B   | TBD    | TBD       |
-| Mistral 7B    | TBD    | TBD       |
-| Phi-3 Mini    | TBD    | TBD       |
-| Gemma 7B      | TBD    | TBD       |
-
-### Memory Usage (GB)
-
-| Model         | Ollama | LM Studio |
-|---------------|--------|-----------|
-| Llama-3 8B    | TBD    | TBD       |
-| Llama-3 70B   | TBD    | TBD       |
-| Mistral 7B    | TBD    | TBD       |
-| Phi-3 Mini    | TBD    | TBD       |
-| Gemma 7B      | TBD    | TBD       |
-
-## Hardware Utilization Comparison
-
-*This section will contain charts showing CPU, memory and GPU utilization across different runtimes and models once benchmark results are collected.*
 
 ## Interpreting Results
 
