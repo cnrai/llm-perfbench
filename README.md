@@ -1,6 +1,6 @@
-# LLM Performance Benchmark
+# LLM Performance Benchmark for Apple M3 Ultra
 
-A comprehensive benchmarking tool for measuring Large Language Model (LLM) inference performance across different runtime engines on Apple M3 Ultra hardware.
+A benchmarking tool for measuring various Large Language Model (LLM) inference performance across different runtime engines on Apple M3 Ultra hardware.
 
 ## Overview
 
@@ -16,7 +16,7 @@ This project provides a standardized framework for evaluating the token processi
 | **RAM**               | 512GB unified memory, 819GB/s memory bandwidth                               |
 | **OS**                | macOS Sequoia 15.3.2                                                         |
 | **Prompt Sets**       | Short (< 100 tokens), Long (1000+ tokens)                                    |
-| **Metrics Collected** | Input tokens/sec, Output tokens/sec, Total latency, Memory usage             |
+| **Metrics Collected** | Input tokens/sec, Output tokens/sec, Memory usage                            |
 | **Iterations**        | 3 runs per model/runtime configuration without warmup (avoid prompt caching) |
 
 ## Benchmark Results
@@ -56,9 +56,9 @@ Note: DeepSeek-R1-Q4_K_M cannot be tested with MLX due to the GGUF model format.
 
 ### Runtime Engines Tested
 
-- **Ollama**: Ollama is an open-source tool that allows you to run LLMs locally on your machine
-- **LM Studio**: LM Studio is a desktop application designed to facilitate local experimentation, management, and interaction with large language models (LLMs)
 - **MLX**: MLX is an array framework for machine learning on Apple silicon by Apple. We expect it to be the fastest runtime engine for LLMs on M3 Ultra hardware.
+- **LM Studio**: LM Studio is a desktop application designed to facilitate local experimentation, management, and interaction with large language models (LLMs)
+- **llama.cpp**: Inference engine of Meta's LLaMA model (and others) in pure C/C++.
 
 
 ## Features
