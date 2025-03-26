@@ -32,10 +32,11 @@ Below are example results measuring tokens per second for both input tokenizatio
 
 | Model                                    | MLX   | LM Studio | llama.cpp  |
 | ---------------------------------------- | ----- | --------- | ---------- |
+| Llama-3.3-70b-instruct-fp16              | 66.0  | N/A       | Not tested |
+| Mistral-Small-3.1-24B-Instruct-2503-bf16 | 234.1 | N/A       | Not tested |
 | DeepSeek-V3-0324-4bit                    | 41.5  | N/A       | Not tested |
 | DeepSeek-R1-Q4_K_M                       | N/A   | N/A       | 12.9       |
-| Mistral-Small-3.1-24B-Instruct-2503-bf16 | 234.1 | N/A       | Not tested |
-| Llama-3.3-70b-instruct-fp16              | 66.0  | N/A       | Not tested |
+| QwQ-32B-8bit                             | 93.8  | N/A       | Not tested |
 
 Note: LM Studio does not provide input tokenization speed.
 
@@ -43,10 +44,11 @@ Note: LM Studio does not provide input tokenization speed.
 
 | Model                                    | MLX  | LM Studio | llama.cpp  |
 | ---------------------------------------- | ---- | --------- | ---------- |
+| Llama-3.3-70b-instruct-fp16              | 5.1  | 4.9       | Not tested |
+| Mistral-Small-3.1-24B-Instruct-2503-bf16 | 15.5 | 15.6      | Not tested |
 | DeepSeek-V3-0324-4bit                    | 20.9 | 19.7      | Not tested |
 | DeepSeek-R1-Q4_K_M                       | N/A  | 15.9      | 15.5       |
-| Mistral-Small-3.1-24B-Instruct-2503-bf16 | 15.5 | 15.6      | Not tested |
-| Llama-3.3-70b-instruct-fp16              | 5.1  | 4.9       | Not tested |
+| QwQ-32B-8bit                             | 18.2 | 18.1      | Not tested |
 
 Note: DeepSeek-R1-Q4_K_M cannot be tested with MLX due to the GGUF model format.
 
@@ -54,10 +56,11 @@ Note: DeepSeek-R1-Q4_K_M cannot be tested with MLX due to the GGUF model format.
 
 | Model                                    | MLX | LM Studio | llama.cpp  |
 | ---------------------------------------- | --- | --------- | ---------- |
+| Llama-3.3-70b-instruct-fp16              | 141 | 132       | Not tested |
+| Mistral-Small-3.1-24B-Instruct-2503-bf16 | 48  | 45        | Not tested |
 | DeepSeek-V3-0324-4bit                    | 381 | 354       | Not tested |
 | DeepSeek-R1-Q4_K_M                       | N/A | 396       | 435        |
-| Mistral-Small-3.1-24B-Instruct-2503-bf16 | 48  | 45        | Not tested |
-| Llama-3.3-70b-instruct-fp16              | 141 | 132       | Not tested |
+| QwQ-32B-8bit                             | 35  | 34        | Not tested |
 
 ### Runtime Engines Tested
 
