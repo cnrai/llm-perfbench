@@ -1,5 +1,7 @@
 # LLM Performance Benchmark for Apple M3 Ultra
 
+[![image](https://github.com/user-attachments/assets/6d432ee9-1186-41e6-a191-010640a87899)](https://cnr.ai)
+
 A benchmarking tool for measuring various Large Language Model (LLM) inference performance across different runtime engines on Apple M3 Ultra hardware.
 
 ## Overview
