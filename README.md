@@ -38,33 +38,44 @@ Below are example results measuring tokens per second for both input tokenizatio
 | ---------------------------------------- | ----- | --------- | ---------- |
 | Llama-3.3-70b-instruct-fp16              | 66.0  | N/A       | Not tested |
 | Mistral-Small-3.1-24B-Instruct-2503-bf16 | 234.1 | N/A       | Not tested |
-| DeepSeek-V3-0324-4bit                    | 41.5  | N/A       | Not tested |
+| DeepSeek-V3-0324-4bit                    | 114.6 | N/A       | Not tested |
 | DeepSeek-R1-Q4_K_M                       | N/A   | N/A       | 12.9       |
 | QwQ-32B-8bit                             | 93.8  | N/A       | Not tested |
+| Qwen2.5-72B-Instruct-8bit                | 162.6 | N/A       | Not tested |
+| Qwen2.5-72B-Instruct-4bit                | 163.6 | N/A       | Not tested |
+| Qwen2.5-VL-32B-Instruct-8bit             | 309.4 | N/A       | Not tested |
 
-Note: LM Studio does not provide input tokenization speed.
+Note:
+- LM Studio does not provide input tokenization speed.
+- For DeepSeek-V3-0324-4bit, this [commit](https://github.com/ml-explore/mlx-lm/tree/191d81d1a0b158f2ef0b07f9fcbc8ee561297bab) was used for MLX testing.
 
 ### Output Generation Speed (tokens/sec)
 
-| Model                                    | MLX  | LM Studio | llama.cpp  |
-| ---------------------------------------- | ---- | --------- | ---------- |
-| Llama-3.3-70b-instruct-fp16              | 5.1  | 4.9       | Not tested |
-| Mistral-Small-3.1-24B-Instruct-2503-bf16 | 15.5 | 15.6      | Not tested |
-| DeepSeek-V3-0324-4bit                    | 20.9 | 19.7      | Not tested |
-| DeepSeek-R1-Q4_K_M                       | N/A  | 15.9      | 15.5       |
-| QwQ-32B-8bit                             | 18.2 | 18.1      | Not tested |
+| Model                                    | MLX  | LM Studio  | llama.cpp  |
+| ---------------------------------------- | ---- | ---------- | ---------- |
+| Llama-3.3-70b-instruct-fp16              | 5.1  | 4.9        | Not tested |
+| Mistral-Small-3.1-24B-Instruct-2503-bf16 | 15.5 | 15.6       | Not tested |
+| DeepSeek-V3-0324-4bit                    | 20.9 | 19.7       | Not tested |
+| DeepSeek-R1-Q4_K_M                       | N/A  | 15.9       | 15.5       |
+| QwQ-32B-8bit                             | 18.2 | 18.1       | Not tested |
+| Qwen2.5-72B-Instruct-8bit                | 9.3  | 8.4        | Not tested |
+| Qwen2.5-72B-Instruct-4bit                | 16.7 | Not tested | Not tested |
+| Qwen2.5-VL-32B-Instruct-8bit             | 18.5 | 18.7       | Not tested |
 
 Note: DeepSeek-R1-Q4_K_M cannot be tested with MLX due to the GGUF model format.
 
 ### Memory Usage (GB)
 
-| Model                                    | MLX | LM Studio | llama.cpp  |
-| ---------------------------------------- | --- | --------- | ---------- |
-| Llama-3.3-70b-instruct-fp16              | 141 | 132       | Not tested |
-| Mistral-Small-3.1-24B-Instruct-2503-bf16 | 48  | 45        | Not tested |
-| DeepSeek-V3-0324-4bit                    | 381 | 354       | Not tested |
-| DeepSeek-R1-Q4_K_M                       | N/A | 396       | 435        |
-| QwQ-32B-8bit                             | 35  | 34        | Not tested |
+| Model                                    | MLX | LM Studio  | llama.cpp  |
+| ---------------------------------------- | --- | ---------- | ---------- |
+| Llama-3.3-70b-instruct-fp16              | 141 | 132        | Not tested |
+| Mistral-Small-3.1-24B-Instruct-2503-bf16 | 48  | 45         | Not tested |
+| DeepSeek-V3-0324-4bit                    | 381 | 354        | Not tested |
+| DeepSeek-R1-Q4_K_M                       | N/A | 396        | 435        |
+| QwQ-32B-8bit                             | 35  | 34         | Not tested |
+| Qwen2.5-72B-Instruct-8bit                | 79  | 73         | Not tested |
+| Qwen2.5-72B-Instruct-4bit                | 42  | Not tested | Not tested |
+| Qwen2.5-VL-32B-Instruct-8bit             | 38  | 36         | Not tested |
 
 ### Runtime Engines Tested
 
